@@ -1,11 +1,17 @@
 const express = require('express')
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
+const mongoose = require('mongoose')
+const jsxEngine = require('jsx-view-engine')
 
 
-let animals = []
+const Animal = require('./models/animals')
 
 app.use(express.json())
+app.set('view engine', 'jsx')
+app.engine('jsx', jsxEngine())
+
+app.get('/items:')
 
 
 app.listen(PORT, () => {
